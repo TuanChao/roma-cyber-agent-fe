@@ -1,0 +1,20 @@
+{
+  "name": "Roma Security - AI-Powered Monitoring",
+  "short_name": "Roma Security",
+  "description": "AI-powered security monitoring and threat analysis platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#ff6b6b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/ai-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["security", "productivity", "utilities"],
+  "screenshots": []
+}
