@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Loader, User } from 'lucide-react';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import GeminiIcon from '../components/GeminiIcon';
+import { chatWithAI } from '../services/api';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -14,7 +14,7 @@ const AIChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hello! I\'m Roma, your AI security assistant powered by Gemini 2.0 Flash. Ask me anything about cybersecurity threats, incident analysis, or security best practices!',
+      content: 'Hello! I\'m Roma, your AI security assistant powered by OpenAI GPT. Ask me anything about cybersecurity threats, incident analysis, or security best practices!',
       timestamp: new Date(),
     },
   ]);
@@ -44,14 +44,11 @@ const AIChat = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/ai/chat', {
-        message: input,
-        conversation_history: messages.slice(-10), // Send last 10 messages for context
-      });
+      const response = await chatWithAI(input, messages.slice(-10));
 
       const assistantMessage: Message = {
         role: 'assistant',
-        content: response.data.response,
+        content: response.response,
         timestamp: new Date(),
       };
 

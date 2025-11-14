@@ -20,6 +20,15 @@ export const getAgentHealth = async (agentName: string) => {
   return data;
 };
 
+// AI Chat
+export const chatWithAI = async (message: string, conversationHistory: any[] = []) => {
+  const { data } = await api.post('/api/ai/chat', {
+    message,
+    conversation_history: conversationHistory
+  });
+  return data;
+};
+
 // Network Monitor
 export const startNetworkMonitor = async () => {
   const { data } = await api.post('/api/network-monitor/start');
