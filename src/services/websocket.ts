@@ -3,7 +3,7 @@
  * Compatible with FastAPI WebSocket endpoint
  */
 
-const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws';
+const WS_URL = import.meta.env.VITE_WS_URL || 'wss://web-production-dcd5c.up.railway.app/ws';
 
 type EventCallback = (data: any) => void;
 
